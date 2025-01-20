@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "DifyHelper",
+  "version": "1.0",
+  "description": "基于Dify API的AI助手",
+  "permissions": [
+    "storage",
+    "contextMenus",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": [
+        "marked.min.js",
+        "content.js",
+        "search_enhance.js"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["*.svg", "*.png"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
